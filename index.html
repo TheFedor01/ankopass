@@ -62,6 +62,7 @@
             color: #74ebd5;
         }
 
+        /* Для точек */
         .dot {
             position: absolute;
             width: 5px;
@@ -85,10 +86,29 @@
             }
         }
 
-        /* Класс для начала анимации */
-        .startAnimation .dot {
-            animation-play-state: running;
+        /* Для игры Змейка */
+        .game-container {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            border: 1px solid white;
+            background-color: black;
         }
+
+        .snake {
+            background-color: green;
+            position: absolute;
+        }
+
+        .food {
+            background-color: red;
+            position: absolute;
+        }
+
     </style>
 </head>
 <body>
@@ -107,12 +127,17 @@
         <p id="message"></p>
     </div>
 
+    <!-- Контейнер игры Змейка -->
+    <div class="game-container hidden" id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
     <!-- Файлы аудио -->
     <audio id="mainAudio" loop>
         <source src="main.mp3" type="audio/mpeg">
     </audio>
-    <audio id="giftAudio">
-        <source src="gift.mp3" type="audio/mpeg">
+    <audio id="snakeAudio">
+        <source src="snake.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Подключение скрипта -->
