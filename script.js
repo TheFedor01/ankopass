@@ -9,11 +9,14 @@ const message = document.getElementById('message');
 
 // Нажатие на кнопку "Включить"
 startButton.addEventListener('click', () => {
+    // Запускаем фоновую музыку
     mainAudio.play().catch((error) => {
         console.error("Ошибка воспроизведения:", error);
     });
-    startContainer.classList.add('hidden'); // Скрываем кнопку
-    codeContainer.classList.remove('hidden'); // Показываем поле ввода
+
+    // Скрываем кнопку и показываем поле ввода
+    startContainer.classList.add('hidden');
+    codeContainer.classList.remove('hidden');
 });
 
 // Обработка ввода кода
@@ -33,11 +36,5 @@ input.addEventListener('keydown', (e) => {
             message.textContent = "Код неверный, попробуйте ещё раз.";
         }
         input.value = ''; // Очищаем поле ввода
-    }
-});
-
-input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        handleCodeInput(); // Обрабатываем ввод кода
     }
 });
