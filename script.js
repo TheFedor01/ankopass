@@ -6,7 +6,7 @@ const mainAudio = document.getElementById('mainAudio');
 const giftAudio = document.getElementById('giftAudio');
 const input = document.getElementById('codeInput');
 const message = document.getElementById('message');
-const background = document.getElementById('background');
+const dotsContainer = document.getElementById('dotsContainer');
 
 // Нажатие на кнопку "Включить"
 startButton.addEventListener('click', () => {
@@ -40,16 +40,16 @@ input.addEventListener('keydown', (e) => {
     }
 });
 
-// Создание анимации с белыми точками
+// Функция создания точек
 function createDots() {
     for (let i = 0; i < 100; i++) {
         const dot = document.createElement('div');
         dot.classList.add('dot');
-        dot.style.left = `${Math.random() * 100}vw`;
-        dot.style.animationDelay = `${Math.random() * 5}s`;
-        dot.style.animationDuration = `${3 + Math.random() * 5}s`;
-        background.appendChild(dot);
+        dot.style.left = `${Math.random() * 100}vw`; // Размещаем точку случайным образом по ширине
+        dot.style.animationDelay = `${Math.random() * 5}s`; // Задержка анимации для каждой точки
+        dot.style.animationDuration = `${3 + Math.random() * 5}s`; // Длительность анимации
+        dotsContainer.appendChild(dot);
     }
 }
 
-createDots();
+createDots(); // Запуск функции для создания точек
