@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сюрприз</title>
     <style>
-        /* Общие стили */
         body {
             margin: 0;
             overflow: hidden;
@@ -18,7 +17,10 @@
             height: 100vh;
         }
 
-        /* Анимация точек */
+        .hidden {
+            display: none;
+        }
+
         .dot {
             position: absolute;
             width: 5px;
@@ -42,10 +44,24 @@
             }
         }
 
-        /* Центрированный контент */
         .container {
             text-align: center;
             z-index: 1;
+        }
+
+        .start-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #74ebd5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .start-button:hover {
+            background-color: #4aa7a3;
         }
 
         h1 {
@@ -69,32 +85,19 @@
     </style>
 </head>
 <body>
-    <!-- Контейнер для центрального контента -->
-    <div class="container">
+    <!-- Контейнер кнопки -->
+    <div class="container" id="startContainer">
+        <button class="start-button" id="startButton">Включить</button>
+    </div>
+
+    <!-- Контейнер ввода кода -->
+    <div class="container hidden" id="codeContainer">
         <h1>Введите код</h1>
         <input type="text" id="codeInput" placeholder="Введите код" />
         <p id="message"></p>
     </div>
 
-    <!-- Скрипт для точек -->
-    <script>
-        // Генерация точек
-        const createDot = () => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            dot.style.left = Math.random() * 100 + 'vw';
-            dot.style.animationDuration = Math.random() * 3 + 4 + 's';
-            document.body.appendChild(dot);
-
-            setTimeout(() => {
-                dot.remove();
-            }, 5000);
-        };
-
-        setInterval(createDot, 150);
-    </script>
-
-    <!-- Музыка -->
+    <!-- Файлы аудио -->
     <audio id="mainAudio" loop>
         <source src="main.mp3" type="audio/mpeg">
     </audio>
@@ -102,37 +105,7 @@
         <source src="gift.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Скрипт для ввода кода -->
-    <script>
-        const mainAudio = document.getElementById('mainAudio');
-        const giftAudio = document.getElementById('giftAudio');
-        const input = document.getElementById('codeInput');
-        const message = document.getElementById('message');
-
-        // Запуск основной музыки при загрузке
-        window.onload = () => {
-            mainAudio.play();
-        };
-
-        // Обработка ввода кода
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const code = input.value.trim().toLowerCase();
-                if (code === 'аня') {
-                    mainAudio.pause();
-                    giftAudio.play();
-                    giftAudio.onended = () => {
-                        mainAudio.play();
-                    };
-                    message.textContent = "Секретное сообщение для Ани ❤️";
-                } else if (code === 'love') {
-                    message.textContent = "Ты прекрасна, как звезда ✨";
-                } else {
-                    message.textContent = "Код неверный, попробуйте ещё раз.";
-                }
-                input.value = '';
-            }
-        });
-    </script>
+    <!-- Подключение скрипта -->
+    <script src="script.js"></script>
 </body>
 </html>
