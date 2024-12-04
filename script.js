@@ -6,6 +6,7 @@ const mainAudio = document.getElementById('mainAudio');
 const giftAudio = document.getElementById('giftAudio');
 const input = document.getElementById('codeInput');
 const message = document.getElementById('message');
+const background = document.getElementById('background');
 
 // Нажатие на кнопку "Включить"
 startButton.addEventListener('click', () => {
@@ -38,3 +39,17 @@ input.addEventListener('keydown', (e) => {
         input.value = ''; // Очищаем поле ввода
     }
 });
+
+// Создание анимации с белыми точками
+function createDots() {
+    for (let i = 0; i < 100; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        dot.style.left = `${Math.random() * 100}vw`;
+        dot.style.animationDelay = `${Math.random() * 5}s`;
+        dot.style.animationDuration = `${3 + Math.random() * 5}s`;
+        background.appendChild(dot);
+    }
+}
+
+createDots();
