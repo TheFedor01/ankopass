@@ -18,6 +18,9 @@ startButton.addEventListener('click', () => {
     // Скрываем кнопку и показываем поле ввода
     startContainer.classList.add('hidden');
     codeContainer.classList.remove('hidden');
+
+    // Запуск анимации точек
+    dotsContainer.classList.add('startAnimation');
 });
 
 // Обработка ввода кода
@@ -52,4 +55,5 @@ function createDots() {
     }
 }
 
-createDots(); // Запуск функции для создания точек
+// Создаем точки, но не запускаем анимацию до нажатия кнопки
+createDots();
