@@ -34,12 +34,14 @@ startButton.addEventListener('click', () => {
     codeContainer.classList.remove('hidden');
 
     // Запуск анимации точек
-    dotsContainer.classList.add('startAnimation');
+    createDots();
 });
 
 // Обработка ввода кода
 input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
+        e.preventDefault(); // Останавливаем перезагрузку страницы
+
         const code = input.value.trim().toLowerCase(); // Получаем код
         if (code === 'аня') {
             mainAudio.pause(); // Останавливаем фоновую музыку
