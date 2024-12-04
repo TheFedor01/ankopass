@@ -119,4 +119,49 @@ function updateGame() {
 
 // Функция рисования игры
 function drawGame() {
-    ctx.clearRect(
+    ctx.clearRect(0, 0, canvasSize, canvasSize); // Очищаем холст
+
+    // Рисуем змейку
+    snake.forEach(segment => {
+        ctx.fillStyle = 'green';
+        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
+    });
+
+    // Рисуем еду
+    ctx.fillStyle = 'red';
+    ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+
+    // Отображаем счёт
+    ctx.fillStyle = 'white';
+    ctx.font = '20px Arial';
+    ctx.fillText(`Счёт: ${score}`, 10, 30);
+}
+
+// Функция проверки столкновения
+function isCollide(head) {
+    for (let i = 1; i < snake.length; i++) {
+        if (snake[i].x === head.x && snake[i].y === head.y) return true;
+    }
+    return false;
+}
+
+// Функция обработки изменения направления
+function changeDirection(e) {
+    if (e.key === 'ArrowUp' && direction !== 'DOWN') direction = 'UP';
+    if (e.key === 'ArrowDown' && direction !== 'UP') direction = 'DOWN';
+    if (e.key === 'ArrowLeft' && direction !== 'RIGHT') direction = 'LEFT';
+    if (e.key === 'ArrowRight' && direction !== 'LEFT') direction = 'RIGHT';
+}
+
+// Функция окончания игры
+function gameOver() {
+    clearInterval(gameInterval);
+    message.textContent = `Игра окончена! Ваш счёт: ${score}`;
+    setTimeout(() => {
+        gameContainer.classList.add('hidden');
+        startContainer.classList.remove('hidden');
+    }, 2000);
+}
+
+// Создаем точки, но не запускаем анимацию до нажатия кнопки
+createDots();
