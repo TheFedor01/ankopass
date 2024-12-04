@@ -17,8 +17,8 @@ let direction = 'RIGHT';
 let food = { x: 15, y: 15 };
 let score = 0;
 let gameInterval;
-const gridSize = 20;
-const canvasSize = 400;
+const gridSize = 20; // Размер клетки
+const canvasSize = 400; // Размер игрового поля
 gameCanvas.width = canvasSize;
 gameCanvas.height = canvasSize;
 
@@ -123,7 +123,7 @@ function updateGame() {
 function drawGame() {
     ctx.clearRect(0, 0, canvasSize, canvasSize); // Очищаем холст
 
-    // Рисуем змейку
+    // Рисуем змейку как набор прямоугольников
     snake.forEach(segment => {
         ctx.fillStyle = 'green';
         ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
