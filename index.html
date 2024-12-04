@@ -11,10 +11,6 @@
             background: black;
             color: white;
             font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
 
         .hidden {
@@ -22,8 +18,12 @@
         }
 
         .container {
-            text-align: center;
+            position: relative;
             z-index: 1;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
         }
 
         .start-button {
@@ -59,9 +59,35 @@
             font-size: 1.2em;
             color: #74ebd5;
         }
+
+        .dot {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            animation: floatUp 5s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Анимация с белыми точками -->
+    <div id="background"></div>
+
     <!-- Контейнер кнопки -->
     <div class="container" id="startContainer">
         <button class="start-button" id="startButton">Включить</button>
