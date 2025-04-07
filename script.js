@@ -31,3 +31,52 @@ function typeText() {
 window.onload = function() {
     typeText();
 };
+// Elements
+const startScreen = document.getElementById('start-screen');
+const startButton = document.getElementById('start-button');
+const mainContent = document.getElementById('main-content');
+const sprite = document.getElementById('fedro-sprite');
+const textElement = document.getElementById('text');
+const typingSound = document.getElementById('typing-sound');
+const bgMusic = document.getElementById('bg-music');
+
+// Sprite Animation Setup
+const sprites = ['fedrosprite1.png', 'fedrosprite2.png', 'fedrosprite3.png', 'fedrosprite4.png'];
+let spriteIndex = 0;
+
+function animateSprite() {
+    sprite.src = sprites[spriteIndex];
+    spriteIndex = (spriteIndex + 1) % sprites.length;
+}
+
+// Typing Effect Setup
+const message = "Hey there! Welcome to my website! I hope you like it!"; // Customize this message
+let charIndex = 0;
+
+function typeText() {
+    if (charIndex < message.length) {
+        textElement.textContent += message[charIndex];
+        typingSound.currentTime = 0; // Reset sound to start
+        typingSound.play();
+        charIndex++;
+        setTimeout(typeText, 100); // Adjust typing speed (100ms per character)
+    }
+}
+
+// Start Button Click Event
+startButton.addEventListener('click', () => {
+    // Hide the start screen
+    startScreen.style.display = 'none';
+
+    // Show the main content
+    mainContent.style.display = 'block';
+
+    // Start the background music
+    bgMusic.play();
+
+    // Start the sprite animation
+    setInterval(animateSprite, 500); // Change sprite every 500ms
+
+    // Start the typing effect
+    typeText();
+});
