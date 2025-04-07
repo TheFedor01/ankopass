@@ -7,29 +7,37 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Background Image -->
-    <div class="background"></div>
-
-    <!-- Fedro Sprite (we'll cycle through the sprites for animation) -->
-    <img id="fedro-sprite" src="fedrosprite1.png" alt="Fedro Sprite">
-
-    <!-- Textbox and Text -->
-    <div class="textbox-container">
-        <img src="textbox.png" alt="Textbox" class="textbox">
-        <p id="text" class="text"></p>
+    <!-- Start Screen -->
+    <div id="start-screen">
+        <button id="start-button">Start</button>
     </div>
 
-    <!-- Background Music -->
-    <audio id="bg-music" loop autoplay>
-        <source src="hipshop.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <!-- Main Content (hidden initially) -->
+    <div id="main-content" style="display: none;">
+        <!-- Background Image -->
+        <div class="background"></div>
 
-    <!-- Typing Sound -->
-    <audio id="typing-sound">
-        <source src="fedrovoice.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+        <!-- Fedro Sprite -->
+        <img id="fedro-sprite" src="fedrosprite1.png" alt="Fedro Sprite">
+
+        <!-- Textbox and Text -->
+        <div class="textbox-container">
+            <img src="textbox.png" alt="Textbox" class="textbox">
+            <p id="text" class="text"></p>
+        </div>
+
+        <!-- Background Music -->
+        <audio id="bg-music" loop>
+            <source src="hipshop.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- Typing Sound -->
+        <audio id="typing-sound">
+            <source src="fedrovoice.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
     <script src="script.js"></script>
 </body>
