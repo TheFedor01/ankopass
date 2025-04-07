@@ -1,27 +1,33 @@
-const text = "Привет, моя дорогая! ✨\nЯ сделал этот сайт специально для тебя. 💖\nТы чудо в моей жизни!";
-const typedText = document.getElementById('typed-text');
-const voice = document.getElementById('voice');
-const bgm = document.getElementById('bgm');
+// Sprite Animation
+const sprite = document.getElementById('fedro-sprite');
+const sprites = ['fedrosprite1.png', 'fedrosprite2.png', 'fedrosprite3.png', 'fedrosprite4.png'];
+let spriteIndex = 0;
 
-document.getElementById('start-btn').addEventListener('click', () => {
-  document.getElementById('start-screen').style.display = 'none';
-  document.getElementById('main').style.display = 'block';
-  bgm.play();
-  typeText(text, 50);
-});
-
-function typeText(str, speed) {
-  let i = 0;
-  function type() {
-    if (i < str.length) {
-      typedText.textContent += str[i];
-      if (str[i] !== ' ' && str[i] !== '\n') {
-        voice.currentTime = 0;
-        voice.play();
-      }
-      i++;
-      setTimeout(type, speed);
-    }
-  }
-  type();
+function animateSprite() {
+    sprite.src = sprites[spriteIndex];
+    spriteIndex = (spriteIndex + 1) % sprites.length;
 }
+
+setInterval(animateSprite, 500); // Change sprite every 500ms
+
+// Typing Effect
+const textElement = document.getElementById('text');
+const typingSound = document.getElementById('typing-sound');
+const message = "Привет, Анечка!!!"; // Customize this message
+
+let charIndex = 0;
+
+function typeText() {
+    if (charIndex < message.length) {
+        textElement.textContent += message[charIndex];
+        typingSound.currentTime = 0; // Reset sound to start
+        typingSound.play();
+        charIndex++;
+        setTimeout(typeText, 100); // Adjust typing speed (100ms per character)
+    }
+}
+
+// Start typing when the page loads
+window.onload = function() {
+    typeText();
+};
