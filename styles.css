@@ -19,6 +19,36 @@ body {
     position: relative;
 }
 
+/* Start Screen */
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('bg.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Start Button */
+#start-button {
+    font-family: 'Deltarune', sans-serif;
+    font-size: 36px;
+    color: white;
+    background-color: #333;
+    border: 2px solid white;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-button:hover {
+    background-color: #555;
+}
+
 /* Background */
 .background {
     position: absolute;
