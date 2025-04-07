@@ -1,32 +1,36 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Для неё</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fedro's Website</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <audio id="bgm" src="hipshop.mp3" loop></audio>
-  <audio id="voice" src="fedrovoice.mp3"></audio>
+    <!-- Background Image -->
+    <div class="background"></div>
 
-  <div id="start-screen">
-    <button id="start-btn">Начать</button>
-  </div>
+    <!-- Fedro Sprite (we'll cycle through the sprites for animation) -->
+    <img id="fedro-sprite" src="fedrosprite1.png" alt="Fedro Sprite">
 
-  <div id="main" style="display: none;">
-    <img id="bg" src="bg.png" alt="Background">
-    
-    <div id="sprite-container">
-      <img id="sprite" src="fedrosprite1.png" alt="Fedro Sprite">
+    <!-- Textbox and Text -->
+    <div class="textbox-container">
+        <img src="textbox.png" alt="Textbox" class="textbox">
+        <p id="text" class="text"></p>
     </div>
 
-    <div id="textbox">
-      <div id="text-wrapper">
-        <p id="typed-text"></p>
-      </div>
-    </div>
-  </div>
+    <!-- Background Music -->
+    <audio id="bg-music" loop autoplay>
+        <source src="hipshop.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-  <script src="script.js"></script>
+    <!-- Typing Sound -->
+    <audio id="typing-sound">
+        <source src="fedrovoice.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script>
 </body>
 </html>
