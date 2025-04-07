@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'Deltarune';
+  src: url('deltarune.otf') format('opentype');
+}
+
+body {
+  margin: 0;
+  font-family: 'Deltarune', sans-serif;
+  overflow: hidden;
+  background: black;
+}
+
+#bg {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
+}
+
+#start-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: black;
+}
+
+#start-btn {
+  font-size: 2rem;
+  padding: 20px 40px;
+  font-family: 'Deltarune', sans-serif;
+  cursor: pointer;
+}
+
+#sprite-container {
+  position: absolute;
+  bottom: 150px;
+  left: 50px;
+}
+
+#sprite {
+  height: 300px;
+}
+
+#textbox {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: url('textbox.png') no-repeat center;
+  background-size: contain;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#typed-text {
+  font-size: 1.5rem;
+  color: white;
+  max-width: 80%;
+  text-align: center;
+}
